@@ -33,31 +33,24 @@ const Control = styled.div `
 `
 
 interface Props {
-  onSave: (title: string) => void
+  onDelete: (title: string) => void
   onCancel: () => void
 }
 
-export const SaveModal: React.FC<Props> = props => {
-  const {onCancel, onSave} = props
+export const DeleteModal: React.FC<Props> = props => {
+  const {onCancel, onDelete} = props
   const[title, setTitle] = useState(new Date().toISOString())
   
   return (
     <Wrapper>
       <Modal>
-        <p>テキストの内容を保存します。</p>
-        <p>保存内容のタイトルを入力して「保存」ボタンを押してください。</p>
-        <p>
-          <TitleInput
-            type="text"
-            value={title}
-            onChange={(event) => setTitle(event.target.value)}
-          />
-        </p>
+        <p>履歴の内容を削除します。</p>
+        <p>履歴内容のタイトルを確認して「削除」ボタンを押してください。</p>
         <Control>
           <Button onClick={onCancel} cancel>
             キャンセル
           </Button>
-          <Button onClick={() => onSave(title)} >
+          <Button onClick={() => onDelete(title)} >
             保存
           </Button>
         </Control>
